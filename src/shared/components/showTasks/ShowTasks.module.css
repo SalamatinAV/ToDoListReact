@@ -1,0 +1,30 @@
+.blTask {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(255, 255, 255);
+  padding: 4px 10px;
+  width: 90%;
+  border-radius: 0.3rem;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #53c7c3;
+  font-weight: 700;
+  transition: 0.3s;
+  .date {
+    /* color: #ff5722;
+     */
+    color: #4300fc;
+
+    text-align: center;
+    font-size: 0.6rem;
+  }
+}
+
+.blTask:hover {
+  background-color: #53c7c399;
+}
+@media (max-width: 700px) {
+  .blTask {
+    width: 100%;
+  }
+}
