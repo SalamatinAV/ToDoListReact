@@ -1,15 +1,22 @@
+import { colors } from "@mui/material";
 import classes from "./ShowTasks.module.css";
-import AddTaskIcon from "@mui/icons-material/AddTask";
 
-const addTaskIconStyled = {
-  color: "green",
-  fontSize: "1.8rem",
-  cursor: "pointer",
-  transition: "0.5s",
-  ":hover": { color: "#00e700" },
+const iconStyles = {
+  AddTaskIcon: {
+    color: "green",
+    ":hover": { color: "#00e700" },
+  },
+  DeleteIcon: {
+    color: "#ab0000",
+    ":hover": { color: "#ff0202" },
+  },
 };
 
-export default function ShowTasks({ task, date, onDelete }) {
+function getIconStyle(component) {
+  return iconStyles[component.displayName] || {};
+}
+
+export default function ShowTasks({ task, date, onDelete, IconComponents }) {
   const idxDate = date.split(",");
 
   return (
@@ -21,7 +28,17 @@ export default function ShowTasks({ task, date, onDelete }) {
           {idxDate[1]}
         </span>
         <span className={classes.task}>{task}</span>
-        <AddTaskIcon sx={addTaskIconStyled} onClick={onDelete} />
+
+        <IconComponents
+          sx={{
+            cursor: "pointer",
+            transition: "0.5s",
+            fontSize: "1.6rem",
+            color: "green",
+            ...getIconStyle(IconComponents),
+          }}
+          onClick={onDelete}
+        />
       </div>
     </>
   );
